@@ -2,8 +2,11 @@ package me.silvernine.jwttutorial.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -23,7 +26,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users {
+public class Users{
     @JsonIgnore
     @Id
     @Column(name = "user_id")
@@ -50,4 +53,7 @@ public class Users {
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "authority_name")})
     private Set<Authority> authorities;
+
+    public Users(String subject, String s, Collection<? extends GrantedAuthority> authorities) {
+    }
 }
