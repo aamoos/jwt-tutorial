@@ -22,10 +22,9 @@ import java.util.Set;
  */
 @Entity
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Users{
     @JsonIgnore
     @Id
